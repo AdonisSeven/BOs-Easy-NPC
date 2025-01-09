@@ -20,6 +20,7 @@
 package de.markusbordihn.easynpc.client.renderer.entity.raw;
 
 import de.markusbordihn.easynpc.Constants;
+import de.markusbordihn.easynpc.client.model.raw.ZombieRawModel;
 import de.markusbordihn.easynpc.client.texture.CustomTextureManager;
 import de.markusbordihn.easynpc.client.texture.RemoteTextureManager;
 import de.markusbordihn.easynpc.entity.easynpc.EasyNPC;
@@ -33,7 +34,8 @@ import net.minecraft.client.renderer.entity.ZombieRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.monster.Zombie;
 
-public class ZombieRawRenderer extends ZombieRenderer {
+public class ZombieRawRenderer extends ZombieRenderer
+    implements RawRenderer<Zombie, ZombieRawModel<Zombie>> {
 
   protected static final Map<Variant, ResourceLocation> TEXTURE_BY_VARIANT =
       Util.make(

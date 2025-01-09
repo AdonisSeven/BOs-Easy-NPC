@@ -24,6 +24,7 @@ import de.markusbordihn.easynpc.client.model.ModModelLayers;
 import de.markusbordihn.easynpc.client.renderer.entity.custom.FairyModelRenderer;
 import de.markusbordihn.easynpc.client.renderer.entity.custom.OrcModelRenderer;
 import de.markusbordihn.easynpc.client.renderer.entity.layers.CustomHumanoidArmorLayer;
+import de.markusbordihn.easynpc.client.renderer.entity.raw.EnderManRawRenderer;
 import de.markusbordihn.easynpc.client.renderer.entity.raw.PiglinRawRenderer;
 import de.markusbordihn.easynpc.client.renderer.entity.raw.SkeletonRawRenderer;
 import de.markusbordihn.easynpc.client.renderer.entity.raw.ZombieRawRenderer;
@@ -45,6 +46,7 @@ import de.markusbordihn.easynpc.client.renderer.entity.standard.ZombieVillagerMo
 import de.markusbordihn.easynpc.compat.CompatConstants;
 import de.markusbordihn.easynpc.entity.ModEntityType;
 import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.renderer.entity.BeeRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -122,7 +124,11 @@ public class ClientRenderer {
     event.registerEntityRenderer(ModEntityType.SKELETON_HORSE.get(), HorseModelRenderer::new);
     event.registerEntityRenderer(ModEntityType.ZOMBIE_HORSE.get(), HorseModelRenderer::new);
 
+    // Modern entities (without custom model)
+    event.registerEntityRenderer(ModEntityType.ENDERMAN.get(), EnderManRawRenderer::new);
+
     // Raw entities (for modding only)
+    event.registerEntityRenderer(ModEntityType.ENDERMAN_RAW.get(), EnderManRawRenderer::new);
     event.registerEntityRenderer(
         ModEntityType.PIGLIN_RAW.get(),
         context ->

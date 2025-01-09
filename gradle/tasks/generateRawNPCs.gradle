@@ -4,6 +4,15 @@ task generateRawNPCs {
   def templateFile = file("$rawNPCFolder/NPCRawTemplate.java")
   def npcClasses = [
       [
+          id       : "enderman_raw",
+          class    : "net.minecraft.world.entity.monster.EnderMan",
+          className: "EnderManRaw",
+          baseClass: "EnderMan",
+          variant  : "ENDERMAN",
+          variants : "ENDERMAN"
+
+      ],
+      [
           id       : "skeleton_raw",
           class    : "net.minecraft.world.entity.monster.Skeleton",
           className: "SkeletonRaw",

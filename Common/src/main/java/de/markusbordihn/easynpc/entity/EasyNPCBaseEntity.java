@@ -19,7 +19,6 @@
 
 package de.markusbordihn.easynpc.entity;
 
-import de.markusbordihn.easynpc.Constants;
 import de.markusbordihn.easynpc.data.server.ServerEntityData;
 import de.markusbordihn.easynpc.data.synched.SynchedDataIndex;
 import de.markusbordihn.easynpc.data.synched.SynchedEntityData;
@@ -64,13 +63,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class EasyNPCBaseEntity<E extends PathfinderMob> extends PathfinderMob
     implements EasyNPCBase<E> {
-
-  protected static final Logger log = LogManager.getLogger(Constants.LOG_NAME);
+  
   protected static final EnumMap<SynchedDataIndex, EntityDataAccessor<?>> entityDataAccessorMap =
       new EnumMap<>(SynchedDataIndex.class);
   private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);

@@ -17,58 +17,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.easynpc.data.skin;
+package de.markusbordihn.easynpc.client.model.raw;
 
-import java.util.Locale;
+import net.minecraft.client.model.ZombieModel;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.world.entity.monster.Zombie;
 
-public enum SkinModel {
-  ALLAY,
-  CAT,
-  CHICKEN,
-  ENDERMAN,
-  FAIRY,
-  HUMANOID(true),
-  HUMANOID_SLIM(true),
-  ILLAGER,
-  IRON_GOLEM,
-  ORC,
-  PIG,
-  PIGLIN,
-  WOLF,
-  SKELETON(true),
-  VILLAGER(true),
-  ZOMBIE(true),
-  ZOMBIE_VILLAGER(true);
+public class ZombieRawModel<T extends Zombie> extends ZombieModel<T> implements RawModel {
 
-  private final boolean hasArmourersWorkshopSupport;
-
-  SkinModel() {
-    this(false);
+  public ZombieRawModel(ModelPart modelPart) {
+    super(modelPart);
   }
 
-  SkinModel(boolean hasArmourersWorkshopSupport) {
-    this.hasArmourersWorkshopSupport = hasArmourersWorkshopSupport;
-  }
-
-  public static SkinModel get(String skinModel) {
-    if (skinModel == null || skinModel.isEmpty()) {
-      return SkinModel.HUMANOID;
-    }
-    try {
-      return SkinModel.valueOf(skinModel);
-    } catch (IllegalArgumentException e) {
-      return SkinModel.HUMANOID;
-    }
-  }
-
-  public boolean hasArmourersWorkshopSupport() {
-    return this.hasArmourersWorkshopSupport;
-  }
-
-  public String getName() {
-    return this.name()
-        .toLowerCase(Locale.ROOT)
-        .replaceAll("[^a-zA-Z0-9/._-]", "")
-        .replace("..", "");
-  }
 }

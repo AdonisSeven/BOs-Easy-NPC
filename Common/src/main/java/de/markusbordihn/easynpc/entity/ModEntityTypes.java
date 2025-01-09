@@ -22,6 +22,7 @@ package de.markusbordihn.easynpc.entity;
 import de.markusbordihn.easynpc.entity.easynpc.npc.Allay;
 import de.markusbordihn.easynpc.entity.easynpc.npc.Cat;
 import de.markusbordihn.easynpc.entity.easynpc.npc.Chicken;
+import de.markusbordihn.easynpc.entity.easynpc.npc.EnderMan;
 import de.markusbordihn.easynpc.entity.easynpc.npc.Fairy;
 import de.markusbordihn.easynpc.entity.easynpc.npc.Horse;
 import de.markusbordihn.easynpc.entity.easynpc.npc.Humanoid;
@@ -36,6 +37,7 @@ import de.markusbordihn.easynpc.entity.easynpc.npc.Villager;
 import de.markusbordihn.easynpc.entity.easynpc.npc.Wolf;
 import de.markusbordihn.easynpc.entity.easynpc.npc.Zombie;
 import de.markusbordihn.easynpc.entity.easynpc.npc.ZombieVillager;
+import de.markusbordihn.easynpc.entity.easynpc.raw.EnderManRaw;
 import de.markusbordihn.easynpc.entity.easynpc.raw.PiglinRaw;
 import de.markusbordihn.easynpc.entity.easynpc.raw.SkeletonRaw;
 import de.markusbordihn.easynpc.entity.easynpc.raw.ZombieRaw;
@@ -138,7 +140,13 @@ public class ModEntityTypes {
   public static final EntityType<ZombieVillager> ZOMBIE_VILLAGER =
       registerEntityType(ZombieVillager::new, ZombieVillager.ID);
 
+  // Modern entities (without custom model)
+  public static final EntityType<EnderMan> ENDERMAN =
+      registerEntityType(EnderMan::new, EnderMan.ID);
+
   // Raw entities (for modding only)
+  public static final EntityType<EnderManRaw> ENDERMAN_RAW =
+      registerEntityType(EnderManRaw::new, EnderManRaw.ID);
   public static final EntityType<PiglinRaw> PIGLIN_RAW =
       registerEntityType(PiglinRaw::new, PiglinRaw.ID);
   public static final EntityType<SkeletonRaw> SKELETON_RAW =

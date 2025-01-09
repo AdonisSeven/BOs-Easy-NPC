@@ -28,6 +28,7 @@ import de.markusbordihn.easynpc.data.synched.SynchedEntityData;
 import de.markusbordihn.easynpc.data.ticker.TickerType;
 import de.markusbordihn.easynpc.entity.easynpc.EasyNPC;
 import de.markusbordihn.easynpc.entity.easynpc.EasyNPCBase;
+import de.markusbordihn.easynpc.entity.easynpc.EasyNPCBaseModel;
 import de.markusbordihn.easynpc.entity.easynpc.handlers.AttackHandler;
 import de.markusbordihn.easynpc.entity.easynpc.handlers.InteractionHandler;
 import de.markusbordihn.easynpc.entity.easynpc.handlers.VisibilityHandler;
@@ -57,7 +58,7 @@ import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.goal.GoalSelector;
-import net.minecraft.world.entity.monster.Skeleton;
+import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.item.trading.MerchantOffers;
@@ -69,16 +70,17 @@ import net.minecraft.world.phys.Vec3;
 /*
  * WARNING: This is an automatically generated file, please do not modify it directly!
  */
-public class SkeletonRaw extends Skeleton implements EasyNPCBase<Skeleton> {
+public class EnderManRaw extends EnderMan implements EasyNPCBaseModel<EnderMan> {
 
-  public static final String ID = "skeleton_raw";
+  public static final String ID = "enderman_raw";
 
   protected static final EnumMap<SynchedDataIndex, EntityDataAccessor<?>> entityDataAccessorMap =
       new EnumMap<>(SynchedDataIndex.class);
   private static final UniformInt PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(20, 39);
 
   static {
-    EasyNPCBase.registerEasyNPCSyncedData(entityDataAccessorMap, SkeletonRaw.class);
+    EasyNPCBase.registerEasyNPCSyncedData(entityDataAccessorMap, EnderManRaw.class);
+    EasyNPCBaseModel.registerEasyNPCSyncedData(entityDataAccessorMap, EnderManRaw.class);
   }
 
   private final EnumMap<TickerType, Integer> tickerMap = new EnumMap<>(TickerType.class);
@@ -92,7 +94,7 @@ public class SkeletonRaw extends Skeleton implements EasyNPCBase<Skeleton> {
   private Player tradingPlayer;
   private FakePlayer fakePlayer;
 
-  public SkeletonRaw(EntityType<? extends Skeleton> entityType, Level level) {
+  public EnderManRaw(EntityType<? extends EnderMan> entityType, Level level) {
     super(entityType, level);
   }
 
@@ -481,7 +483,7 @@ public class SkeletonRaw extends Skeleton implements EasyNPCBase<Skeleton> {
 
   @Override
   public SkinModel getSkinModel() {
-    return SkinModel.SKELETON;
+    return SkinModel.ENDERMAN;
   }
 
   @Override
@@ -491,7 +493,7 @@ public class SkeletonRaw extends Skeleton implements EasyNPCBase<Skeleton> {
 
   @Override
   public Enum<?> getDefaultVariant() {
-    return Variant.SKELETON;
+    return Variant.ENDERMAN;
   }
 
   @Override
@@ -508,6 +510,7 @@ public class SkeletonRaw extends Skeleton implements EasyNPCBase<Skeleton> {
     super.defineSynchedData();
     this.defineEasyNPCBaseSyncedData();
     this.defineEasyNPCBaseServerSideData();
+    this.defineEasyNPCBaseModelSyncedData();
   }
 
   @Override
@@ -515,6 +518,7 @@ public class SkeletonRaw extends Skeleton implements EasyNPCBase<Skeleton> {
     super.addAdditionalSaveData(compoundTag);
     this.addPersistentAngerSaveData(compoundTag);
     this.addEasyNPCBaseAdditionalSaveData(compoundTag);
+    this.addEasyNPCBaseModelAdditionalSaveData(compoundTag);
   }
 
   @Override
@@ -522,6 +526,7 @@ public class SkeletonRaw extends Skeleton implements EasyNPCBase<Skeleton> {
     super.readAdditionalSaveData(compoundTag);
     this.readPersistentAngerSaveData(this.level, compoundTag);
     this.readEasyNPCBaseAdditionalSaveData(compoundTag);
+    this.readEasyNPCBaseModelAdditionalSaveData(compoundTag);
   }
 
   @Override
@@ -541,6 +546,6 @@ public class SkeletonRaw extends Skeleton implements EasyNPCBase<Skeleton> {
   }
 
   public enum Variant {
-    SKELETON, STRAY, WITHER_SKELETON
+    ENDERMAN
   }
 }

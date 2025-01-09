@@ -17,58 +17,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.easynpc.data.skin;
+package de.markusbordihn.easynpc.client.model.raw;
 
-import java.util.Locale;
+import net.minecraft.client.model.EndermanModel;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.world.entity.monster.EnderMan;
 
-public enum SkinModel {
-  ALLAY,
-  CAT,
-  CHICKEN,
-  ENDERMAN,
-  FAIRY,
-  HUMANOID(true),
-  HUMANOID_SLIM(true),
-  ILLAGER,
-  IRON_GOLEM,
-  ORC,
-  PIG,
-  PIGLIN,
-  WOLF,
-  SKELETON(true),
-  VILLAGER(true),
-  ZOMBIE(true),
-  ZOMBIE_VILLAGER(true);
+public class EnderManRawModel<T extends EnderMan> extends EndermanModel<T> implements RawModel {
 
-  private final boolean hasArmourersWorkshopSupport;
-
-  SkinModel() {
-    this(false);
-  }
-
-  SkinModel(boolean hasArmourersWorkshopSupport) {
-    this.hasArmourersWorkshopSupport = hasArmourersWorkshopSupport;
-  }
-
-  public static SkinModel get(String skinModel) {
-    if (skinModel == null || skinModel.isEmpty()) {
-      return SkinModel.HUMANOID;
-    }
-    try {
-      return SkinModel.valueOf(skinModel);
-    } catch (IllegalArgumentException e) {
-      return SkinModel.HUMANOID;
-    }
-  }
-
-  public boolean hasArmourersWorkshopSupport() {
-    return this.hasArmourersWorkshopSupport;
-  }
-
-  public String getName() {
-    return this.name()
-        .toLowerCase(Locale.ROOT)
-        .replaceAll("[^a-zA-Z0-9/._-]", "")
-        .replace("..", "");
+  public EnderManRawModel(ModelPart modelPart) {
+    super(modelPart);
+    log.info("EnderManRawModel created with", modelPart);
   }
 }

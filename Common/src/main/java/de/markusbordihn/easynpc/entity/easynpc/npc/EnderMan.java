@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 Markus Bordihn
+ * Copyright 2024 Markus Bordihn
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
  * associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -17,58 +17,47 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.easynpc.data.skin;
+package de.markusbordihn.easynpc.entity.easynpc.npc;
 
-import java.util.Locale;
+import de.markusbordihn.easynpc.entity.easynpc.raw.EnderManRaw;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.Level;
 
-public enum SkinModel {
-  ALLAY,
-  CAT,
-  CHICKEN,
-  ENDERMAN,
-  FAIRY,
-  HUMANOID(true),
-  HUMANOID_SLIM(true),
-  ILLAGER,
-  IRON_GOLEM,
-  ORC,
-  PIG,
-  PIGLIN,
-  WOLF,
-  SKELETON(true),
-  VILLAGER(true),
-  ZOMBIE(true),
-  ZOMBIE_VILLAGER(true);
+public class EnderMan extends EnderManRaw {
 
-  private final boolean hasArmourersWorkshopSupport;
+  public static final String ID = "enderman";
 
-  SkinModel() {
-    this(false);
+  public EnderMan(EntityType<? extends EnderMan> entityType, Level level) {
+    super(entityType, level);
   }
 
-  SkinModel(boolean hasArmourersWorkshopSupport) {
-    this.hasArmourersWorkshopSupport = hasArmourersWorkshopSupport;
+  @Override
+  protected void registerGoals() {
+    // No default goals
   }
 
-  public static SkinModel get(String skinModel) {
-    if (skinModel == null || skinModel.isEmpty()) {
-      return SkinModel.HUMANOID;
-    }
-    try {
-      return SkinModel.valueOf(skinModel);
-    } catch (IllegalArgumentException e) {
-      return SkinModel.HUMANOID;
-    }
+  @Override
+  protected void customServerAiStep() {
+    // No custom server AI steps
   }
 
-  public boolean hasArmourersWorkshopSupport() {
-    return this.hasArmourersWorkshopSupport;
+  @Override
+  public boolean supportsPoseConfiguration() {
+    return true;
   }
 
-  public String getName() {
-    return this.name()
-        .toLowerCase(Locale.ROOT)
-        .replaceAll("[^a-zA-Z0-9/._-]", "")
-        .replace("..", "");
+  @Override
+  public boolean supportsScalingConfiguration() {
+    return false;
+  }
+
+  @Override
+  public boolean supportsDefaultRotationConfiguration() {
+    return false;
+  }
+
+  @Override
+  public boolean supportsChangeModelConfiguration() {
+    return true;
   }
 }

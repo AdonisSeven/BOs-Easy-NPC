@@ -541,8 +541,6 @@ public class ZombieRaw extends Zombie implements EasyNPCBase<Zombie> {
   }
 
   public enum Variant {
-    DROWNED,
-    HUSK,
-    ZOMBIE
+    DROWNED, HUSK, ZOMBIE
   }
 }

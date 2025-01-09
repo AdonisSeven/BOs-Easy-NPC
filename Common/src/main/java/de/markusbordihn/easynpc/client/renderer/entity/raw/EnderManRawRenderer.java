@@ -17,58 +17,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package de.markusbordihn.easynpc.data.skin;
+package de.markusbordihn.easynpc.client.renderer.entity.raw;
 
-import java.util.Locale;
+import de.markusbordihn.easynpc.Constants;
+import de.markusbordihn.easynpc.client.model.raw.EnderManRawModel;
+import de.markusbordihn.easynpc.entity.easynpc.npc.EnderMan;
+import net.minecraft.client.renderer.entity.EndermanRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public enum SkinModel {
-  ALLAY,
-  CAT,
-  CHICKEN,
-  ENDERMAN,
-  FAIRY,
-  HUMANOID(true),
-  HUMANOID_SLIM(true),
-  ILLAGER,
-  IRON_GOLEM,
-  ORC,
-  PIG,
-  PIGLIN,
-  WOLF,
-  SKELETON(true),
-  VILLAGER(true),
-  ZOMBIE(true),
-  ZOMBIE_VILLAGER(true);
+public class EnderManRawRenderer extends EndermanRenderer
+    implements RawRenderer<EnderMan, EnderManRawModel<EnderMan>> {
 
-  private final boolean hasArmourersWorkshopSupport;
+  Logger log = LogManager.getLogger(Constants.LOG_NAME);
 
-  SkinModel() {
-    this(false);
-  }
-
-  SkinModel(boolean hasArmourersWorkshopSupport) {
-    this.hasArmourersWorkshopSupport = hasArmourersWorkshopSupport;
-  }
-
-  public static SkinModel get(String skinModel) {
-    if (skinModel == null || skinModel.isEmpty()) {
-      return SkinModel.HUMANOID;
-    }
-    try {
-      return SkinModel.valueOf(skinModel);
-    } catch (IllegalArgumentException e) {
-      return SkinModel.HUMANOID;
-    }
-  }
-
-  public boolean hasArmourersWorkshopSupport() {
-    return this.hasArmourersWorkshopSupport;
-  }
-
-  public String getName() {
-    return this.name()
-        .toLowerCase(Locale.ROOT)
-        .replaceAll("[^a-zA-Z0-9/._-]", "")
-        .replace("..", "");
+  public EnderManRawRenderer(Context context) {
+    super(context);
   }
 }

@@ -541,8 +541,6 @@ public class PiglinRaw extends Piglin implements EasyNPCBase<Piglin> {
   }
 
   public enum Variant {
-    PIGLIN,
-    PIGLIN_BRUTE,
-    ZOMBIFIED_PIGLIN
+    PIGLIN, PIGLIN_BRUTE, ZOMBIFIED_PIGLIN
   }
 }

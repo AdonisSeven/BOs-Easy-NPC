@@ -26,6 +26,7 @@ import de.markusbordihn.easynpc.compat.epicfight.entity.EpicFightZombie;
 import de.markusbordihn.easynpc.entity.easynpc.npc.Allay;
 import de.markusbordihn.easynpc.entity.easynpc.npc.Cat;
 import de.markusbordihn.easynpc.entity.easynpc.npc.Chicken;
+import de.markusbordihn.easynpc.entity.easynpc.npc.EnderMan;
 import de.markusbordihn.easynpc.entity.easynpc.npc.Fairy;
 import de.markusbordihn.easynpc.entity.easynpc.npc.Horse;
 import de.markusbordihn.easynpc.entity.easynpc.npc.Humanoid;
@@ -40,6 +41,7 @@ import de.markusbordihn.easynpc.entity.easynpc.npc.Villager;
 import de.markusbordihn.easynpc.entity.easynpc.npc.Wolf;
 import de.markusbordihn.easynpc.entity.easynpc.npc.Zombie;
 import de.markusbordihn.easynpc.entity.easynpc.npc.ZombieVillager;
+import de.markusbordihn.easynpc.entity.easynpc.raw.EnderManRaw;
 import de.markusbordihn.easynpc.entity.easynpc.raw.PiglinRaw;
 import de.markusbordihn.easynpc.entity.easynpc.raw.SkeletonRaw;
 import de.markusbordihn.easynpc.entity.easynpc.raw.ZombieRaw;
@@ -117,7 +119,13 @@ public class ModEntityType {
   public static final RegistryObject<EntityType<ZombieVillager>> ZOMBIE_VILLAGER =
       ENTITY_TYPES.register(ZombieVillager.ID, () -> ModEntityTypes.ZOMBIE_VILLAGER);
 
+  // Modern entities (without custom model)
+  public static final RegistryObject<EntityType<EnderMan>> ENDERMAN =
+      ENTITY_TYPES.register(EnderMan.ID, () -> ModEntityTypes.ENDERMAN);
+
   // Raw entities (for modding only)
+  public static final RegistryObject<EntityType<EnderManRaw>> ENDERMAN_RAW =
+      ENTITY_TYPES.register(EnderManRaw.ID, () -> ModEntityTypes.ENDERMAN_RAW);
   public static final RegistryObject<EntityType<PiglinRaw>> PIGLIN_RAW =
       ENTITY_TYPES.register(PiglinRaw.ID, () -> ModEntityTypes.PIGLIN_RAW);
   public static final RegistryObject<EntityType<SkeletonRaw>> SKELETON_RAW =
@@ -169,7 +177,11 @@ public class ModEntityType {
     event.put(ZOMBIE_HORSE.get(), Horse.createAttributes().build());
     event.put(ZOMBIE_VILLAGER.get(), ZombieVillager.createAttributes().build());
 
+    // Modern entities (without custom model)
+    event.put(ENDERMAN.get(), EnderMan.createAttributes().build());
+
     // Raw entities (for modding only)
+    event.put(ENDERMAN_RAW.get(), EnderManRaw.createAttributes().build());
     event.put(PIGLIN_RAW.get(), Piglin.createAttributes().build());
     event.put(SKELETON_RAW.get(), Skeleton.createAttributes().build());
     event.put(
