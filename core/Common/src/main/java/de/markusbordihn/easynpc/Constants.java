@@ -46,7 +46,7 @@ public final class Constants {
   public static final ResourceLocation TEXTURE_CONFIGURATION =
       ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/configuration.png");
   public static final ResourceLocation TEXTURE_DEMO_BACKGROUND =
-      ResourceLocation.fromNamespaceAndPath(MINECRAFT_PREFIX, "textures/gui/demo_background.png");
+      ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/demo_background.png");
   public static final ResourceLocation TEXTURE_DIALOG =
       ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "textures/gui/dialog.png");
   public static final ResourceLocation TEXTURE_INVENTORY =
